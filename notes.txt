@@ -1,0 +1,15 @@
+Containers are stateful components, so components created with the class
+keyword or functional components using useState and components going into the
+components folder are dumb or presentational components that don't manage
+state
+
+
+Solutions for returning adjacent JSX elements:
+1. wrap them in an array and give each item a key
+2. create an auxiliary higher order component
+
+The idea behind the modal is to have a wrapping element which
+provides the styling which then simply wraps itself about any
+content we want to show in that modal
+
+Arrow functions: contain the state or the context of this
