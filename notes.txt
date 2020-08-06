@@ -13,3 +13,5 @@ provides the styling which then simply wraps itself about any
 content we want to show in that modal
 
 Arrow functions: contain the state or the context of this
+
+NavLink automatically attaches class named active
