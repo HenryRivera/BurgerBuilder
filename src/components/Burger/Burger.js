@@ -1,5 +1,8 @@
 import React from 'react'
 
+// withRouter gives direct access to match, history, and location
+// import { withRouter } from 'react-router-dom'
+
 import classes from './Burger.css'
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient'
 
@@ -27,4 +30,5 @@ const burger = ( props ) =>{
     )
 }
 
+// export default withRouter(burger)
 export default burger

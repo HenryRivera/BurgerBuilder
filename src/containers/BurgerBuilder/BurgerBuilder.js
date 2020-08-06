@@ -106,38 +106,39 @@ class BurgerBuilder extends Component{
 
     makePurchaseHandler = () =>{
         // alert('Order will open in new tab!')
-        this.setState({loading: true})
-        const order = {
-            ingredients: this.state.ingredients,
-            // production ready application should calculate final price on
-            // the server because you probably have your product stored on the
-            // server there to make sure that the user isn't manipulating the code
-            // before sending it and manipulates the price which you are using
-            price: this.state.totalPrice,
-            customer: {
-                fName: 'Henry',
-                lName: 'Rivera',
-                address: {
-                    street: 'David St',
-                    city: 'Fairview',
-                    state: 'New Jersey',
-                    country: 'USA',
-                    zipCode: '08882'
-                },
-                phoneNumber: '2016745464',
-                email: 'mcr545@gmail.com'
-            },
-            deliveryMethod: 'fastest'
-        }
-        axios.post('/orders.json', order)
-            .then(response => {
-                console.log(response)
-                this.setState({ loading: false, purchasing: false })
-            })
-            .catch(error => {
-                console.log(error)
-                this.setState({ loading: false, purchasing: false })
-            })
+        // this.setState({loading: true})
+        // const order = {
+        //     ingredients: this.state.ingredients,
+        //     // production ready application should calculate final price on
+        //     // the server because you probably have your product stored on the
+        //     // server there to make sure that the user isn't manipulating the code
+        //     // before sending it and manipulates the price which you are using
+        //     price: this.state.totalPrice,
+        //     customer: {
+        //         fName: 'Henry',
+        //         lName: 'Rivera',
+        //         address: {
+        //             street: 'David St',
+        //             city: 'Fairview',
+        //             state: 'New Jersey',
+        //             country: 'USA',
+        //             zipCode: '08882'
+        //         },
+        //         phoneNumber: '2016745464',
+        //         email: 'mcr545@gmail.com'
+        //     },
+        //     deliveryMethod: 'fastest'
+        // }
+        // axios.post('/orders.json', order)
+        //     .then(response => {
+        //         console.log(response)
+        //         this.setState({ loading: false, purchasing: false })
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //         this.setState({ loading: false, purchasing: false })
+        //     })
+        this.props.history.push('/checkout')
     }
 
     render(){
