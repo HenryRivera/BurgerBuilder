@@ -30,7 +30,7 @@ class Checkout extends Component {
     }
 
     cancelCheckoutHandler = () =>{
-        this.props.history.goback()
+        this.props.history.goBack()
     }
 
     continueCheckoutHandler = () =>{

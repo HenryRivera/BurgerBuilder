@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div>
         <Layout>
-          // can use switch instead of exact
+          {/*can use switch instead of exact */}
           <Route path="/checkout" component={Checkout} />
           <Route path="/orders" component={Orders} />
           <Route path="/" exact component={BurgerBuilder} />
