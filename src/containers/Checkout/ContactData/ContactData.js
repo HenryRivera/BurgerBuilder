@@ -9,7 +9,7 @@ import Input from '../../../components/UI/Input/Input'
 class ContactData extends Component{
     state = {
         orderForm:{
-            fName: {
+            name: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
@@ -72,16 +72,21 @@ class ContactData extends Component{
     }
 
     orderHandler = (event) =>{
-        // default is to reload the page and send request
+        // default is to reload the page and send request automatically
         event.preventDefault()
         this.setState({loading: true})
+        const formData = {}
+        for (let formElementIdentifier in this.state.orderForm){
+            formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value
+        }
         const order = {
             ingredients: this.props.ingredients,
             // production ready application should calculate final price on
             // the server because you probably have your product stored on the
             // server there to make sure that the user isn't manipulating the code
             // before sending it and manipulates the price which you are using
-            price: this.props.totalPrice
+            price: this.props.totalPrice,
+            orderData: formData
         }
         axios.post('/orders.json', order)
             .then(response => {
@@ -115,7 +120,7 @@ class ContactData extends Component{
             })
         }
         let form = (
-            <form>
+            <form onSubmit={this.orderHandler} >
                 {formElements.map(curr =>(
                     <Input 
                         key={curr.id}
@@ -124,7 +129,7 @@ class ContactData extends Component{
                         value={curr.config.value}
                         changed={(event) => this.inputChangedHandler(event, curr.id)}/>
                 ))}
-                <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
+                <Button btnType="Success">ORDER</Button>
             </form>
         )
         if (this.state.loading){
