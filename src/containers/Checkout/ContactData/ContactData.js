@@ -8,11 +8,65 @@ import Input from '../../../components/UI/Input/Input'
 
 class ContactData extends Component{
     state = {
-        name: '',
-        email: '',
-        address:{
-            street: '',
-            zipCode: ''
+        orderForm:{
+            fName: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Name'
+                },
+                value: ''
+            },
+            street: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Address'
+                },
+                value: ''
+            },
+            zipCode: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Zip Code'
+                },
+                value: ''
+            },
+            country: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Country'
+                },
+                value: ''
+            },
+            phoneNumber: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Phone Number'
+                },
+                value: ''
+            },
+            email: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'email',
+                    placeholder: 'Email'
+                },
+                value: ''
+            },
+            deliveryMethod: {
+                elementType: 'select',
+                elementConfig: {
+                    options: [
+                        {value: 'fastest', displayValue: 'Priority Delivery'},
+                        {value: 'standard', displayValue: 'Standard Delivery'}
+                    ]
+                },
+                value: ''
+            }
         },
         loading: false
     }
@@ -27,21 +81,7 @@ class ContactData extends Component{
             // the server because you probably have your product stored on the
             // server there to make sure that the user isn't manipulating the code
             // before sending it and manipulates the price which you are using
-            price: this.props.totalPrice,
-            customer: {
-                fName: 'Henry',
-                lName: 'Rivera',
-                address: {
-                    street: 'David St',
-                    city: 'Fairview',
-                    state: 'New Jersey',
-                    country: 'USA',
-                    zipCode: '08882'
-                },
-                phoneNumber: '2016745464',
-                email: 'mcr545@gmail.com'
-            },
-            deliveryMethod: 'fastest'
+            price: this.props.totalPrice
         }
         axios.post('/orders.json', order)
             .then(response => {
@@ -54,14 +94,14 @@ class ContactData extends Component{
                 this.setState({ loading: false })
             })
     }
-
     render(){
         let form = (
             <form>
-                <Input inputtype="input" type="text" name="name" placeholder="Name" />
-                <Input inputtype="input" type="email" name="email" placeholder="Email" />
+                <Input elementType="" elementConfig="" value="" />
                 <Input inputtype="input" type="text" name="street" placeholder="Address" />
                 <Input inputtype="input" type="text" name="zip" placeholder="Zip Code" />
+                <Input inputtype="input" type="email" name="email" placeholder="Email" />
+                <Input inputtype="input" type="text" name="phoneNumber" placeholder="Phone Number" />
                 <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
             </form>
         )
