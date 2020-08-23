@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import axios from '../../../axios-orders'
 
 import Button from '../../../components/UI/Button/Button'
@@ -103,7 +104,7 @@ class ContactData extends Component{
                 valid: true
             }
         },
-        validForm: false,
+        formValid: false,
         loading: false
     }
 
@@ -164,11 +165,11 @@ class ContactData extends Component{
         updatedFormElement.touched = true
         updatedOrderForm[inputIdentifier] = updatedFormElement
 
-        const validForm = true
+        let formValid = true
         for (let inputIdentifier in updatedOrderForm){
-            validForm = updatedOrderForm[inputIdentifier].valid && validForm
+            formValid = updatedOrderForm[inputIdentifier].valid && formValid
         }
-        this.setState({orderForm: updatedOrderForm, validForm: validForm})
+        this.setState({orderForm: updatedOrderForm, formValid: formValid})
     }
     render(){
         const formElements = []
@@ -191,7 +192,7 @@ class ContactData extends Component{
                         touched={curr.config.touched}
                         changed={(event) => this.inputChangedHandler(event, curr.id)}/>
                 ))}
-                <Button btnType="Success" disabled={!this.state.validForm}>ORDER</Button>
+                <Button btnType="Success" disabled={!this.state.formValid}>ORDER</Button>
             </form>
         )
         if (this.state.loading){
@@ -206,4 +207,11 @@ class ContactData extends Component{
     }
 }
 
-export default ContactData
+const mapStateToProps = state =>{
+    return{
+        ings: state.ingredients,
+        price: state.totalPrice
+    }
+}
+
+export default connect(mapStateToProps)(ContactData)
