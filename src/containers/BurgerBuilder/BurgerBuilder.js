@@ -33,11 +33,12 @@ class BurgerBuilder extends Component{
     }
 
     componentDidMount(){
-        axios.get('https://react-my-burger-bfc7c.firebaseio.com/ingredients.json').then(response =>{
-            this.setState({ingredients: response.data})
-        }).catch(error => {
-            this.setState({errorState: true})
-        })
+        console.log(this.props)
+        // axios.get('https://react-my-burger-bfc7c.firebaseio.com/ingredients.json').then(response =>{
+        //     this.setState({ingredients: response.data})
+        // }).catch(error => {
+        //     this.setState({errorState: true})
+        // })
     }
 
     canPurchase (ings){
