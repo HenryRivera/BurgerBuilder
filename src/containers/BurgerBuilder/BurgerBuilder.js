@@ -24,9 +24,11 @@ class BurgerBuilder extends Component{
     state = {
         ingredients: null,
         totalPrice: 2,
-        purchase: false,
-        purchasing: false,
-        loading: false,
+
+        // local UI state
+        purchase: false, // controls ORDER NOW button
+        purchasing: false, // used to show or hide modal
+        loading: false, // used to display spinner
         errorState: false
     }
 
