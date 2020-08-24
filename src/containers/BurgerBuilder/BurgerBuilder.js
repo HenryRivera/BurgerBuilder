@@ -11,20 +11,12 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
 import axios from '../../axios-orders'
 import * as actiontypes from '../../store/actions'
 
-const ING_PRICES = {
-    salad: 0.50,
-    cheese: 0.75,
-    meat: 1.5,
-    bacon: 1.25
-}
-
 class BurgerBuilder extends Component{
     // constructor(props){
     //     super(props)
     //     this.state = {...}
     // }
     state = {
-        totalPrice: 2,
         // local UI state
         purchase: false, // controls ORDER NOW button
         purchasing: false, // used to show or hide modal
@@ -54,44 +46,44 @@ class BurgerBuilder extends Component{
         this.setState({purchase: sum > 0})
     }
 
-    addIngHandler = (type) =>{
-        const oldCount = this.state.ingredients[type]
-        const updatedCount = oldCount + 1
-        const updatedIngs = {
-            ...this.state.ingredients
-        }
-        updatedIngs[type] = updatedCount
+    // addIngHandler = (type) =>{
+    //     const oldCount = this.state.ingredients[type]
+    //     const updatedCount = oldCount + 1
+    //     const updatedIngs = {
+    //         ...this.state.ingredients
+    //     }
+    //     updatedIngs[type] = updatedCount
 
-        const addPrice = ING_PRICES[type]
-        const oldPrice = this.state.totalPrice
-        const newPrice = oldPrice + addPrice
-        this.setState({
-            totalPrice: newPrice,
-            ingredients: updatedIngs
-        })
-        this.canPurchase(updatedIngs)
-    }
+    //     const addPrice = ING_PRICES[type]
+    //     const oldPrice = this.state.totalPrice
+    //     const newPrice = oldPrice + addPrice
+    //     this.setState({
+    //         totalPrice: newPrice,
+    //         ingredients: updatedIngs
+    //     })
+    //     this.canPurchase(updatedIngs)
+    // }
 
-    removeIngHandler = (type) =>{
-        const oldCount = this.state.ingredients[type]
-        if (oldCount <= 0){
-            return
-        }
-        const updatedCount = oldCount - 1
-        const updatedIngs = {
-            ...this.state.ingredients
-        }
-        updatedIngs[type] = updatedCount
+    // removeIngHandler = (type) =>{
+    //     const oldCount = this.state.ingredients[type]
+    //     if (oldCount <= 0){
+    //         return
+    //     }
+    //     const updatedCount = oldCount - 1
+    //     const updatedIngs = {
+    //         ...this.state.ingredients
+    //     }
+    //     updatedIngs[type] = updatedCount
 
-        const subPrice = ING_PRICES[type]
-        const oldPrice = this.state.totalPrice
-        const newPrice = oldPrice - subPrice
-        this.setState({
-            totalPrice: newPrice,
-            ingredients: updatedIngs
-        })
-        this.canPurchase(updatedIngs)
-    }
+    //     const subPrice = ING_PRICES[type]
+    //     const oldPrice = this.state.totalPrice
+    //     const newPrice = oldPrice - subPrice
+    //     this.setState({
+    //         totalPrice: newPrice,
+    //         ingredients: updatedIngs
+    //     })
+    //     this.canPurchase(updatedIngs)
+    // }
 
     // will NOT work because method is triggered through event
     // this does not refer to the class
@@ -146,7 +138,7 @@ class BurgerBuilder extends Component{
                         ingredientRemoved={this.props.onIngredientRemoved}
                         disabled={disabledInfo}
                         purchase={this.state.purchase}
-                        price={this.state.totalPrice}
+                        price={this.props.price}
                         orderBurger={this.purchaseHandler}/>
                 </Aux>
             )
@@ -154,7 +146,7 @@ class BurgerBuilder extends Component{
                 ings={this.props.ings}
                 cancelOrder={this.cancelPurchaseHandler}
                 makeOrder={this.makePurchaseHandler}
-                price={this.state.totalPrice}
+                price={this.props.price}
             />
         }
 
@@ -175,7 +167,8 @@ class BurgerBuilder extends Component{
 
 const mapStateToProps = state =>{
     return{
-        ings: state.ingredients
+        ings: state.ingredients,
+        price: state.totalPrice
     }
 }
 
