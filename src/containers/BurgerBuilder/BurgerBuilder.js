@@ -18,7 +18,6 @@ class BurgerBuilder extends Component{
     // }
     state = {
         // local UI state
-        purchase: false, // controls ORDER NOW button
         purchasing: false, // used to show or hide modal
         loading: false, // used to display spinner
         errorState: false
@@ -43,7 +42,7 @@ class BurgerBuilder extends Component{
         }).reduce((currSum, curr) =>{
             return currSum + curr
         }, 0)
-        this.setState({purchase: sum > 0})
+        return sum > 0
     }
 
     // addIngHandler = (type) =>{
@@ -137,7 +136,7 @@ class BurgerBuilder extends Component{
                         ingredientAdded={this.props.onIngredientAdded}
                         ingredientRemoved={this.props.onIngredientRemoved}
                         disabled={disabledInfo}
-                        purchase={this.state.purchase}
+                        purchase={this.canPurchase(this.props.ings)}
                         price={this.props.price}
                         orderBurger={this.purchaseHandler}/>
                 </Aux>
