@@ -117,12 +117,12 @@ class ContactData extends Component{
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value
         }
         const order = {
-            ingredients: this.props.ingredients,
+            ingredients: this.props.ings,
             // production ready application should calculate final price on
             // the server because you probably have your product stored on the
             // server there to make sure that the user isn't manipulating the code
             // before sending it and manipulates the price which you are using
-            price: this.props.totalPrice,
+            price: this.props.price,
             orderData: formData
         }
         axios.post('/orders.json', order)
