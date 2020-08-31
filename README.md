@@ -12,6 +12,11 @@ Use the package manager [node](https://nodejs.org/en/) to install the necessary 
 ```bash
 npm install
 ```
+To run the project locally
+
+```bash
+npm start
+```
 
 ## Visual Walkthrough
 ![Video Walkthrough](https://github.com/HenryRivera/BurgerBuilder/blob/master/burgerBuilderDemo.gif)
