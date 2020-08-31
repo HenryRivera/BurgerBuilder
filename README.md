@@ -1,8 +1,9 @@
 # BurgerBuilder
 
-BurgerBuilder is a web app created in react that allows users to create a burger to their liking. They are then given the ability to order it
+**BurgerBuilder** is a web app created in React.JS that allows users to create a burger to their liking. They are then given the ability to order it
 
-## Visuals
+## Author
+* Henry Rivera
 
 ## Installation
 
@@ -12,10 +13,10 @@ Use the package manager [node](https://nodejs.org/en/) to install the necessary 
 npm install
 ```
 
+## Visuals
+
 ## Support
 
-## Author
-* Henry Rivera
 
 ## Project status
 To be implemented
