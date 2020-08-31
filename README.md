@@ -16,3 +16,9 @@ npm install
 
 ## Author
 * Henry Rivera
+
+## Project status
+To be implemented
+* Burger logo in top left hand corner has to redirect users to main page
+* Once order is processed, burger is not emptied for next order
+* Orders tab needs to be populated
