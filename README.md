@@ -13,10 +13,11 @@ Use the package manager [node](https://nodejs.org/en/) to install the necessary 
 npm install
 ```
 
-## Visuals
+## Visual Walkthrough
+![Video Walkthrough](https://github.com/HenryRivera/BurgerBuilder/blob/master/burgerBuilderDemo.gif)
 
 ## Support
-
+If you wish to contribute to the expansion of this project feel free to reach out to me @ henry.rivera@nyu.edu. Thanks!
 
 ## Project status
 To be implemented
